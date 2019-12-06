@@ -1,0 +1,106 @@
+{
+    "openrpc": "1.1.8",
+    "info": {
+        "title": "Автокод.Профи specification",
+        "version": "0.0.1",
+        "description": "API для Автокод.Профи"
+    },
+    "servers": [
+        {
+            "name": "local",
+            "summary": "Local dev server",
+            "url": "https://127.0.0.1"
+        }
+    ],
+    "methods": [
+        {
+            "name": "tags.list",
+            "summary": "Получение списка меток пользователя",
+            "description": "В этом методе можно получить список всех тегов доступных пользователю",
+            "paramStructure": "by-name",
+            "tags": [
+                {
+                    "$ref": "#/components/tags/tag"
+                }
+            ],
+            "params": [
+                {
+                    "$ref": "#/components/contentDescriptors/pagination"
+                }
+            ],
+            "result": {
+                "name": "List of tags",
+                "required": true,
+                "summary": "Список тегов",
+                "description": "Список тегов",
+                "schema": {
+                    "$ref": "schema/tags/list/tags.list.response.json"
+                }
+            },
+            "examples": [
+                {
+                    "name": "Пример",
+                    "params": [
+                        {
+                            "name": "pagination",
+                            "value": {
+                                "page": 1,
+                                "limit": 10
+                            }
+                        }
+                    ],
+                    "result": {
+                        "name": "Пример",
+                        "summary": "Список тегов",
+                        "description": "Список тегов",
+                        "value": {
+                            "pagination": {
+                                "page": 1,
+                                "limit": 10
+                            },
+                            "data": [
+                                {
+                                    "id": 1,
+                                    "name": "some",
+                                    "created_at": "2019-01-01 10:11:12",
+                                    "updated_at": "2019-01-01 10:11:12"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "another",
+                                    "created_at": "2019-01-01 10:11:12",
+                                    "updated_at": "2019-01-01 10:11:12"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "components": {
+        "contentDescriptors": {
+            "pagination": {
+                "name": "pagination",
+                "summary": "Объект пагинации",
+                "schema": {
+                    "$ref": "schema/definitions.json#/definitions/pagination"
+                }
+            },
+            "tag": {
+                "name": "tag",
+                "summary": "Метка пользователя",
+                "description": "Сущность служит для пометки отчетов пользователем",
+                "schema": {
+                    "$ref": "schema/tags/tag.json"
+                }
+            }
+        },
+        "tags": {
+            "tag": {
+                "name": "tag",
+                "description": "Работа с тегами"
+            }
+        }
+    }
+}

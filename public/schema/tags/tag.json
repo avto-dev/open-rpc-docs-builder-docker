@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "tag entity",
+    "type": "object",
+    "description": "Метка пользователя",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Id",
+            "examples": [
+                1
+            ]
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of tag",
+            "examples": [
+                "new",
+                "old",
+                "some"
+            ]
+        },
+        "created_at": {
+            "$ref": "../definitions.json#/definitions/datetime"
+        },
+        "updated_at": {
+            "$ref": "../definitions.json#/definitions/datetime"
+        }
+    }
+}
+
