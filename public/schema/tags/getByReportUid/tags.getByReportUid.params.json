@@ -1,7 +1,13 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
+    "required": [
+        "uuid"
+    ],
     "properties": {
+        "uuid": {
+            "$ref": "../../reports/report.json#/properties/uuid"
+        },
         "pagination": {
             "$ref": "../../definitions/pagination.json"
         },

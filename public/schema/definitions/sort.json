@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Sort",
+    "description": "Sorting object",
+    "type": "object",
+    "properties": {
+        "order": {
+            "type": "string",
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "default": "desc",
+            "description": "The keyword used to sort result sets in either ascending or descending order"
+        },
+        "key": {
+            "description": "order by key is mandatory and is the field on which the sorting is to be performed",
+            "type": "string",
+            "default": "created_at"
+        }
+    }
+}
