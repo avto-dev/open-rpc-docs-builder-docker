@@ -21,10 +21,10 @@
             ]
         },
         "created_at": {
-            "$ref": "../definitions.json#/definitions/datetime"
+            "$ref": "../definitions/datetime.json"
         },
         "updated_at": {
-            "$ref": "../definitions.json#/definitions/datetime"
+            "$ref": "../definitions/datetime.json"
         }
     }
 }

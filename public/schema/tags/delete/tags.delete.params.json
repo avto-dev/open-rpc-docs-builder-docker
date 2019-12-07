@@ -1,9 +1,12 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
+    "required": [
+        "id"
+    ],
     "properties": {
-        "pagination": {
-            "$ref": "../../definitions/pagination.json"
+        "id": {
+            "$ref": "../tag.json#/properties/id"
         }
     }
 }

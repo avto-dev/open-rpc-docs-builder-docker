@@ -5,6 +5,7 @@
   "dependencies": {
     "@open-rpc/docs-react": "^1.1.0",
     "@open-rpc/meta-schema": "^1.5.4",
+    "@open-rpc/playground": "^1.3.3",
     "@open-rpc/schema-utils-js": "^1.11.6",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

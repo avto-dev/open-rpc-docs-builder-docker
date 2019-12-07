@@ -7,7 +7,7 @@
     ],
     "properties": {
         "pagination": {
-            "$ref": "../../definitions.json#/definitions/pagination"
+            "$ref": "../../definitions/pagination.json"
         },
         "data": {
             "description": "Array of tags",
