@@ -26,26 +26,13 @@ help: ## Show this help
 install: ## Install all dependencies
 	$(docker_bin) run $(RUN_ARGS) $(RUN_INTERACTIVE) "$(NODE_IMAGE)" yarn install
 
-test: ## Execute tests and linters
-	$(docker_bin) run $(RUN_ARGS) $(RUN_INTERACTIVE) "$(NODE_IMAGE)" bash -c "yarn run test && yarn run lint"
-
-fix: ## Execute sources fixing
-	$(docker_bin) run $(RUN_ARGS) $(RUN_INTERACTIVE) "$(NODE_IMAGE)" yarn run fix
-
 shell: ## Start shell into container with node
 	$(docker_bin) run $(RUN_ARGS) $(RUN_INTERACTIVE) \
 	  -e "PS1=\[\033[1;32m\]🐳 \[\033[1;36m\][\u@\h] \[\033[1;34m\]\w\[\033[0;35m\] \[\033[1;36m\]# \[\033[0m\]" \
 	  "$(NODE_IMAGE)" bash
 
 watch: install ## Start watching assets for changes
-	@printf "\n  \033[1;42m  %s  \033[0m\n\n" 'Navigate your browser to ⇒ http://127.0.0.1:$(FRONTEND_PORT)'
 	$(docker_bin) run $(RUN_ARGS) $(RUN_INTERACTIVE) "$(NODE_IMAGE)" yarn run start
-
-git-hooks: ## Install (reinstall) git hooks (required after repository cloning)
-	-rm -f "$(shell pwd)/.git/hooks/pre-push" "$(shell pwd)/.git/hooks/pre-commit" "$(shell pwd)/.git/hooks/post-merge"
-	ln -s "$(shell pwd)/.gitlab/git-hooks/pre-push.sh" "$(shell pwd)/.git/hooks/pre-push"
-	ln -s "$(shell pwd)/.gitlab/git-hooks/pre-commit.sh" "$(shell pwd)/.git/hooks/pre-commit"
-	ln -s "$(shell pwd)/.gitlab/git-hooks/post-merge.sh" "$(shell pwd)/.git/hooks/post-merge"
 
 destroy: ## Kill all spawned (and probably disowned) docker-containers
 	$(docker_bin) kill `$(docker_bin) ps --filter "label=$(docker_containers_unique_label)" --format '{{.ID}}'`
@@ -55,12 +42,7 @@ build: install## Build application bundle (and docker image)
 
 pull: ## Pulling newer versions of used docker images
 	$(docker_bin) pull "$(NODE_IMAGE)"
-	$(dc_bin) pull
 
 preview: build ## Start container with application in local mode
-	$(docker_bin) build -f ./docker/Dockerfile --tag $(docker_containers_unique_label) .
-	@printf "\n  \033[1;42m  %s  \033[0m\n\n" 'Navigate your browser to ⇒ http://127.0.0.1:$(PREVIEW_PORT)'
+	$(docker_bin) build -f ./docker/preview/Dockerfile --tag $(docker_containers_unique_label) .
 	$(docker_bin) run -p $(PREVIEW_PORT):80 $(docker_containers_unique_label)
-
-storybook: ## Run storybook
-	$(docker_bin) run $(RUN_ARGS) $(RUN_INTERACTIVE) "$(NODE_IMAGE)" yarn storybook

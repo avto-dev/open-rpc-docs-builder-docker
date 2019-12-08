@@ -24,7 +24,7 @@
                     "required": true,
                     "summary": "Название тега",
                     "schema": {
-                        "$ref": "schema/tags/create/tags.create.params.json#/properties/name"
+                        "$ref": "./schema/tags/create/tags.create.params.json#/properties/name"
                     }
                 }
             ],
@@ -81,7 +81,7 @@
                     "required": true,
                     "summary": "Идентивикатор тега",
                     "schema": {
-                        "$ref": "schema/tags/update/tags.update.params.json#/properties/id"
+                        "$ref": "./schema/tags/update/tags.update.params.json#/properties/id"
                     }
                 },
                 {
@@ -89,7 +89,7 @@
                     "required": true,
                     "summary": "Название тега",
                     "schema": {
-                        "$ref": "schema/tags/update/tags.update.params.json#/properties/name"
+                        "$ref": "./schema/tags/update/tags.update.params.json#/properties/name"
                     }
                 }
             ],
@@ -154,7 +154,7 @@
                     "required": true,
                     "summary": "Идентивикатор тега",
                     "schema": {
-                        "$ref": "schema/tags/delete/tags.delete.params.json#/properties/id"
+                        "$ref": "./schema/tags/delete/tags.delete.params.json#/properties/id"
                     }
                 }
             ],
@@ -205,7 +205,7 @@
                     "summary": "Идентификатор тега",
                     "required": true,
                     "schema": {
-                        "$ref": "schema/tags/isUsed/tags.isUsed.params.json#/properties/id"
+                        "$ref": "./schema/tags/isUsed/tags.isUsed.params.json#/properties/id"
                     }
                 }
             ],
@@ -214,7 +214,7 @@
                 "required": true,
                 "summary": "Используется ли тег",
                 "schema": {
-                    "$ref": "schema/tags/isUsed/tags.isUsed.response.json"
+                    "$ref": "./schema/tags/isUsed/tags.isUsed.response.json"
                 }
             },
             "examples": [
@@ -265,7 +265,7 @@
                 "summary": "Список тегов",
                 "description": "Список тегов",
                 "schema": {
-                    "$ref": "schema/tags/list/tags.list.response.json"
+                    "$ref": "./schema/tags/list/tags.list.response.json"
                 }
             },
             "examples": [
@@ -347,7 +347,7 @@
                     "required": true,
                     "summary": "Идентивикатор отчета в формате RFC 4122",
                     "schema": {
-                        "$ref": "schema/tags/getByReportUid/tags.getByReportUid.params.json#/properties/uuid"
+                        "$ref": "./schema/tags/getByReportUid/tags.getByReportUid.params.json#/properties/uuid"
                     }
                 },
                 {
@@ -363,7 +363,7 @@
                 "summary": "Список тегов",
                 "description": "Список тегов",
                 "schema": {
-                    "$ref": "schema/tags/getByReportUid/tags.getByReportUid.response.json"
+                    "$ref": "./schema/tags/getByReportUid/tags.getByReportUid.response.json"
                 }
             },
             "examples": [
@@ -416,14 +416,14 @@
                 "name": "pagination",
                 "summary": "Объект пагинации",
                 "schema": {
-                    "$ref": "schema/definitions/pagination.json"
+                    "$ref": "./schema/definitions/pagination.json"
                 }
             },
             "sort": {
                 "name": "sort",
                 "summary": "Объект сортировки",
                 "schema": {
-                    "$ref": "schema/definitions/sort.json"
+                    "$ref": "./schema/definitions/sort.json"
                 }
             },
             "tag": {
@@ -431,7 +431,7 @@
                 "summary": "Метка пользователя",
                 "description": "Сущность служит для пометки отчетов пользователем",
                 "schema": {
-                    "$ref": "schema/tags/tag.json"
+                    "$ref": "./schema/tags/tag.json"
                 }
             }
         }
