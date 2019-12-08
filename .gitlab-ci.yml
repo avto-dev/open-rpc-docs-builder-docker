@@ -28,8 +28,8 @@ build app image:
   only:
     - branches
   script:
-    #    - docker pull "$APP_IMAGE:$CI_COMMIT_REF_SLUG" &> /dev/null || docker pull "$APP_IMAGE:master" &> /dev/null || true
-    - docker build -f ./docker/builder/Dockerfile
+    - docker pull "$APP_IMAGE:$CI_COMMIT_REF_SLUG" &> /dev/null || docker pull "$APP_IMAGE:master" &> /dev/null || true
+    - docker build --cache-from "$APP_IMAGE:$CI_COMMIT_REF_SLUG" --cache-from "$APP_IMAGE:master" -f ./docker/builder/Dockerfile
       --tag "$APP_IMAGE:$CI_COMMIT_REF_SLUG" .
     - docker push "$APP_IMAGE:$CI_COMMIT_REF_SLUG"
 
