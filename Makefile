@@ -46,3 +46,20 @@ pull: ## Pulling newer versions of used docker images
 preview: build ## Start container with application in local mode
 	$(docker_bin) build -f ./docker/preview/Dockerfile --tag $(docker_containers_unique_label) .
 	$(docker_bin) run -p $(PREVIEW_PORT):80 $(docker_containers_unique_label)
+
+.ONESHELL:
+release: ## Make release
+	if [[ ! `git rev-parse --abbrev-ref HEAD` == "master" ]]; then \
+		printf "\n   \e[1;41m %s \033[0m\n\n" 'Checkout to the "master" branch!'; exit 1; \
+	fi
+	if [[ `git status --porcelain` ]]; then \
+		printf "\n   \e[1;41m %s \033[0m\n\n" 'Commit changes before!'; exit 1; \
+	fi
+	git fetch --tags --force
+	printf "\033[32m%s\033[0m %s\n" 'Latest tags:' "`git tag --list | tail -n 3 | tr [:space:] ' '`"
+	read -p "Enter release version (like '1.2.3', without any prefix): " RELEASE_VERSION
+	if [[ ! $$RELEASE_VERSION =~ ^[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}$$ ]]; then \
+		printf "\n   \e[1;41m %s \033[0m\n\n" "'$$RELEASE_VERSION' has invalid format!"; exit 1; \
+	fi
+	git tag "v$$RELEASE_VERSION"
+	git push origin "v$$RELEASE_VERSION"
