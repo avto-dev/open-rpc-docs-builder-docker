@@ -10,8 +10,6 @@
 
 # production
 /build
-/src/schemas/*
-/public/schema
 
 # misc
 .DS_Store
