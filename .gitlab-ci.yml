@@ -1,0 +1,73 @@
+# GitLab CI help:      <https://docs.gitlab.com/ee/ci/yaml/>
+# GitLab environments: <https://docs.gitlab.com/ee/ci/variables/>
+#
+# IMPORTANT NOTICES:
+# 1. You should make an protected tags rules in repository. Rules list:
+# - Tag "*"; Allowed to create "No one"
+# - Tag "v*.*.*"; Allowed to create "Maintainers"
+# 2. You should make "Push Rule" - "Branch name" regex `[a-z0-9\/\-]+`
+# 3. You should protect `master` branch - push for "Maintainers" only
+image: docker:stable
+
+services:
+  - docker:dind
+
+variables:
+  APP_IMAGE: $CI_REGISTRY_IMAGE/app
+
+stages:
+  - build
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY &> /dev/null
+  - echo "Current APP image - $APP_IMAGE:$CI_COMMIT_REF_SLUG"
+
+build app image:
+  stage: build
+  only:
+    - branches
+  script:
+    - docker pull "$APP_IMAGE:$CI_COMMIT_REF_SLUG" &> /dev/null || docker pull "$APP_IMAGE:master" &> /dev/null || true
+    - docker build --cache-from "$APP_IMAGE:$CI_COMMIT_REF_SLUG" --cache-from "$APP_IMAGE:master" -f ./docker/app/Dockerfile
+      --tag "$APP_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker push "$APP_IMAGE:$CI_COMMIT_REF_SLUG"
+
+build latest app image:
+  stage: build
+  only:
+    - /^v\d+\.\d+\.\d+$/
+  except:
+    - branches
+  script:
+    - docker pull "$APP_IMAGE:latest" &> /dev/null || true
+    - docker pull "$APP_IMAGE:master" &> /dev/null || true
+    - docker build --cache-from "$APP_IMAGE:latest" --cache-from "$APP_IMAGE:master" -f ./docker/app/Dockerfile
+      --tag "$APP_IMAGE:$CI_COMMIT_REF_SLUG"
+      --tag "$APP_IMAGE:latest" .
+    - docker push "$APP_IMAGE:$CI_COMMIT_REF_SLUG"
+    - docker push "$APP_IMAGE:latest"
+
+
+make releases:
+  stage: deploy
+  only:
+    - /^v\d+\.\d+\.\d+$/
+  except:
+    - branches
+  script: # Docs: <https://github.com/avto-dev/release-tools-docker>
+    - docker run --rm -v $(pwd)/CHANGELOG.md:/ch.md:ro avtodev/release-tools:1.0 changelog-to-gitlab-release.sh
+      /ch.md
+      "$CI_COMMIT_REF_NAME"
+      "$CI_COMMIT_REF_NAME"
+      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/releases"
+      "$RELEASE_API_TOKEN"
+  #    - docker run --rm -v $(pwd)/CHANGELOG.md:/ch.md:ro avtodev/release-tools:1.0 changelog-to-noticeable-post.sh
+  #      /ch.md
+  #      "$CI_COMMIT_REF_NAME"
+  #      "$GITLAB_USER_NAME"
+  #      "Avtocod.ru $CI_COMMIT_REF_NAME"
+  #      "$NOTICABLE_IO_POST_IMAGE_URL"
+  #      "avtocod"
+  #      "$NOTICABLE_IO_PROJECT_ID"
+  #      "$NOTICABLE_IO_API_KEY"
+  allow_failure: true
