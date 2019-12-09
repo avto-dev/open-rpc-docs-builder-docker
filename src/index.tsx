@@ -13,6 +13,7 @@ const reactJsonOptions = {
 };
 
 parseOpenRPCDocument(schema as OpenRPC).then(rpcSchema => {
+    document.title = rpcSchema.info.title;
     ReactDOM.render(
         <MuiThemeProvider theme={darkTheme}>
             <CssBaseline />

@@ -21,6 +21,13 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
  - Каждая запись **должна** завершаться указанием ссылки на того, кто внёс те или иные изменения
 --->
 
+## v0.0.2 - 2019-12-08
+
+### Changed
+
+- Заменены иконки приложения ([@jetexe])
+- Заменён title ([@jetexe])
+
 ## v0.0.1 - 2019-12-08
 
 ### Added
