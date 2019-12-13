@@ -6,18 +6,17 @@ import schema from './schemas/openrpc.json';
 import {OpenRPC} from "@open-rpc/meta-schema/build/src";
 import {MuiThemeProvider} from "@material-ui/core/styles";
 import {CssBaseline} from "@material-ui/core";
-import {darkTheme} from "./themes/openrpcTheme";
+import {darkTheme, lightTheme} from "./themes/openrpcTheme";
 
-const reactJsonOptions = {
-    theme: "summerfruit"
-};
+
+const theme = process.env.REACT_APP_THEME === "dark" ? darkTheme : lightTheme;
 
 parseOpenRPCDocument(schema as OpenRPC).then(rpcSchema => {
     document.title = rpcSchema.info.title;
     ReactDOM.render(
-        <MuiThemeProvider theme={darkTheme}>
+        <MuiThemeProvider theme={theme}>
             <CssBaseline />
-            <Documentation schema={rpcSchema} reactJsonOptions={reactJsonOptions} />
+            <Documentation schema={rpcSchema} />
         </MuiThemeProvider>
         , document.getElementById("root"));
 }).catch(error => {
