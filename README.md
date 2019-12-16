@@ -4,6 +4,12 @@
 
 # OpenRPC documentation builder
 
+[![Build][badge_automated]][link_hub]
+[![Build][badge_build]][link_hub]
+[![Docker Pulls][badge_pulls]][link_hub]
+[![Issues][badge_issues]][link_issues]
+[![License][badge_license]][link_license]
+
 This tool build documentation from [OpenRPC] schema.
 It based on [OpenRPC docs-react][openrpc-docs-react] component and [create-react-app].
 
@@ -43,3 +49,11 @@ COPY --from=builder /app/build /public
 [OpenRPC]:https://spec.open-rpc.org/
 [openrpc-docs-react]:https://github.com/open-rpc/docs-react
 [create-react-app]:https://github.com/facebook/create-react-app
+[badge_automated]:https://img.shields.io/docker/automated/avto-dev/open-rpc-docs-builder.svg?style=flat-square&maxAge=30
+[badge_pulls]:https://img.shields.io/docker/pulls/avto-dev/open-rpc-docs-builder.svg?style=flat-square&maxAge=30
+[badge_issues]:https://img.shields.io/github/issues/avto-dev/open-rpc-docs-builder.svg?style=flat-square&maxAge=30
+[badge_build]:https://img.shields.io/docker/build/avto-dev/open-rpc-docs-builder.svg?style=flat-square&maxAge=30
+[badge_license]:https://img.shields.io/github/license/avto-dev/open-rpc-docs-builder.svg?style=flat-square&maxAge=30
+[link_hub]:https://hub.docker.com/r/avto-dev/open-rpc-docs-builder/
+[link_license]:https://github.com/avto-dev/open-rpc-docs-builder/blob/master/LICENSE
+[link_issues]:https://github.com/avto-dev/open-rpc-docs-builder/issues
