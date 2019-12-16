@@ -31,7 +31,7 @@ Name | Possible values | Default | Description
 ## Docker usage example
 
 ```dockerfile
-FROM avto-dev/openrpc-docs-builder:latest AS builder
+FROM avto-dev/open-rpc-docs-builder:latest AS builder
 
 # Copy openrpc.json file into /app/src/schemas derictory
 COPY ./openrpc.json /app/src/schemas
