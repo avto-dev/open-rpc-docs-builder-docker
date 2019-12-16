@@ -10,7 +10,7 @@ It based on [OpenRPC docs-react][openrpc-docs-react] component and [create-react
 You must put open-rpc schema into `src/schema/openrpc.json` file, then run `yarn run build`.  
 
 Also you can put any additional files into `public` directory,
-all files from `public` will be moved into `build` directory with documentation.
+all files from `public` will be moved into `build` directory with built documentation.
 
 ## Environment variables
 
