@@ -79,6 +79,6 @@ MIT. Use anywhere for your pleasure.
 [badge_issues]:https://img.shields.io/github/issues/avto-dev/open-rpc-docs-builder-docker.svg?style=flat-square&maxAge=30
 [badge_build]:https://img.shields.io/docker/cloud/build/avtodev/open-rpc-docs-builder.svg?style=flat-square&maxAge=30
 [badge_license]:https://img.shields.io/github/license/avto-dev/open-rpc-docs-builder-docker.svg?style=flat-square&maxAge=30
-[link_hub]:https://hub.docker.com/r/avto-dev/open-rpc-docs-builder-docker/
-[link_license]:https://github.com/avto-dev/open-rpc-docs-builder-docker/blob/master/LICENSE
-[link_issues]:https://github.com/avto-dev/open-rpc-docs-builder-docker/issues
+[link_hub]:https://hub.docker.com/r/avtodev/open-rpc-docs-builder-docker/
+[link_license]:https://github.com/avtodev/open-rpc-docs-builder-docker/blob/master/LICENSE
+[link_issues]:https://github.com/avtodev/open-rpc-docs-builder-docker/issues
