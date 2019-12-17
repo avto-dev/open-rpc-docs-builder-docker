@@ -10,13 +10,11 @@
 [![Issues][badge_issues]][link_issues]
 [![License][badge_license]][link_license]
 
-This tool build documentation from [OpenRPC] schema.
-It based on [OpenRPC docs-react][openrpc-docs-react] component and [create-react-app].
+This tool build documentation from [OpenRPC] schema. It based on [OpenRPC docs-react][openrpc-docs-react] component and [create-react-app].
 
-You must put open-rpc schema into `src/schema/openrpc.json` file, then run `yarn run build`.  
+You must put open-rpc schema into `/app/src/schema/openrpc.json` file, then run `yarn run build`.  
 
-Also you can put any additional files into `public` directory,
-all files from `public` will be moved into `build` directory with built documentation.
+Also you can put any additional files into `public` directory, all files from `public` will be moved into `build` directory with built documentation.
 
 ## Environment variables
 
