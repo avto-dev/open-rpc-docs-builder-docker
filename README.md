@@ -28,6 +28,15 @@ Name | Possible values | Default | Description
 :---:|:---:|:---:|:---
 `REACT_APP_THEME` | `dark`,`light` | `light` | Theme of application
 
+## Supported tags
+
+Tag name | Details                  | Full image name                    | Dockerfile
+:------: | :----------------------: | :--------------------------------: | :--------------------:
+`1.1`    | ![Size][badge_size_1_1]  | `avtodev/open-rpc-docs-builder:79` | [link][dockerfile_1_1]
+
+[badge_size_1_1]:https://images.microbadger.com/badges/image/avtodev/open-rpc-docs-builder:1.1.svg
+[dockerfile_1_1]:https://github.com/avto-dev/open-rpc-docs-builder-docker/blob/image-1.1/Dockerfile
+
 ## Examples
 
 ### Build using volumes
