@@ -41,20 +41,23 @@ Tag name | Details                  | Full image name                     | Dock
 
 ### Build using volumes
 
-```shell script
-docker run -v /puth/to/schema/folder:/app/src/schema:ro --name open-rpc-docs avto-dev/open-rpc-docs-builder:latest yarn run build
+```bash
+$ docker run \
+    -v /puth/to/schema/folder:/app/src/schema:ro \
+    --name open-rpc-docs \
+    avto-dev/open-rpc-docs-builder:latest \
+    yarn run build
 
-docker cp open-rpc-docs:/app/build/. $(pwd)/public
+$ docker cp open-rpc-docs:/app/build/. $(pwd)/public
 ```
 
 ### Docker usage example
 
 ```dockerfile
-FROM avto-dev/open-rpc-docs-builder:latest AS builder
+FROM avtodev/open-rpc-docs-builder:1.1 AS builder
 
 # Copy openrpc.json file into /app/src/schemas derictory
 COPY ./openrpc.json /app/src/schemas
-
 # You can copy additional json-schema files into public directory
 COPY ./schemas/json-schema /app/public/schema
 
@@ -65,6 +68,10 @@ FROM alpine:latest
 
 COPY --from=builder /app/build /public
 ```
+
+### License
+
+MIT. Use anywhere for your pleasure.
 
 [OpenRPC]:https://spec.open-rpc.org/
 [openrpc-docs-react]:https://github.com/open-rpc/docs-react
