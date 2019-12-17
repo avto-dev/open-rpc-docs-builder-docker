@@ -3,7 +3,9 @@
 All notable changes to this project will be documented in this file.
 
 <!---
+
  How do I make a good changelog?
+ 
  Guiding Principles:
  - Changelogs are for humans, not machines.
  - There should be an entry for every single version.
@@ -21,11 +23,12 @@ All notable changes to this project will be documented in this file.
 
 --->
 
-## 19.12.17 - 2019-12-17
+## 19.12.17
 
 ### Added
 
 - [Open rpc][open-rpc] documentation builder ([@jetexe])
+- Image with component version `~1.1` (branch `image-1.1`) with docker tag `1.1`
 
 [open-rpc]:https://spec.open-rpc.org/
 [@jetexe]:https://github.com/jetexe
