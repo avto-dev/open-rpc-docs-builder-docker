@@ -33,9 +33,9 @@ Name | Possible values | Default | Description
 ### Build using volumes
 
 ```shell script
-container_id=$(docker run -v /puth/to/schema/folder:/app/src/schema:ro avto-dev/open-rpc-docs-builder:latest yarn run build)
+docker run -v /puth/to/schema/folder:/app/src/schema:ro --name open-rpc-docs avto-dev/open-rpc-docs-builder:latest yarn run build
 
-docker cp $container_id:/build/. $(pwd)/public
+docker cp open-rpc-docs:/app/build/. $(pwd)/public
 ```
 
 ### Docker usage example
