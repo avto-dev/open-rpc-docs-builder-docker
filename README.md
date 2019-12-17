@@ -28,7 +28,17 @@ Name | Possible values | Default | Description
 :---:|:---:|:---:|:---
 `REACT_APP_THEME` | `dark`,`light` | `light` | Theme of application
 
-## Docker usage example
+## Examples
+
+### Build using volumes
+
+```shell script
+container_id=$(docker run -v /puth/to/schema/folder:/app/src/schema:ro avto-dev/open-rpc-docs-builder:latest yarn run build)
+
+docker cp $container_id:/build/. $(pwd)/public
+```
+
+### Docker usage example
 
 ```dockerfile
 FROM avto-dev/open-rpc-docs-builder:latest AS builder
@@ -41,6 +51,7 @@ COPY ./schemas/json-schema /app/public/schema
 
 RUN yarn run build
 
+# Optional you can copy built documentation into any other container (e.g nginx)
 FROM alpine:latest
 
 COPY --from=builder /app/build /public

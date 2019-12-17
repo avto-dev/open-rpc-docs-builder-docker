@@ -33,6 +33,6 @@ If you want to create new image tag, you should:
 - Create PR with your `Dockerfile` contents into new branch with name `image-*`
 - Create PR into `master` branch with your image tag description (`README.md`) and changes description (`CHANGELOG.md`)
 
-> Do not forget update latest version value into `image-latest` branch!
+> Do not forget update version value into `Dockerfile` label!
 
 Thank you for your suggestions!
