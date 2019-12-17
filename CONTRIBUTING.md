@@ -21,7 +21,6 @@ We use automated docker builds. You must to know and follow next rules:
 
 Image tag branches:
 
-- Must be created with next commands: `git checkout --orphan image-DOCKER_TAG_NAME && git rm -rf .`
 - Must contains `Dockerfile` into the root (`/`)
 - Any after `image-` will be used as docker image tag name *(e.g. branch `image-latest` &rarr; tag `latest`, branch `image-1.2.3` &rarr; tag `1.2.3`)*
 
