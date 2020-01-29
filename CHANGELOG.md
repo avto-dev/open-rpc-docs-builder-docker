@@ -23,6 +23,12 @@ All notable changes to this project will be documented in this file.
 
 --->
 
+## 20.01.29
+
+### Changed
+
+- Update dependencies
+
 ## 19.12.17
 
 ### Added
