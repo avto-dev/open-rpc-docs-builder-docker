@@ -67,9 +67,9 @@ COPY --from=builder /app/build /public
 
 ## Releasing
 
-New versions publishing is very simple - just update dependencies version(s) in `./package.json` file and "publish" new release using repo releases page. This action will trigger building of minor and patch image tags (eg.: release `v1.2.3` will create or update docker images with tags `1.2` and `1.2.3`).
+New versions publishing is very simple - just update dependencies version(s) in `./package.json` file (or make any another changes) and "publish" new release using repo releases page. This action will trigger docker images (re)building (eg.: release `v1.2.3` will create or update docker images with tags `1.2` and `1.2.3`).
 
-> Release version _(and git tag, of course)_ MUST starts with `v` prefix (eg.: `v0.0.1` or `v1.2.3-RC1`) and follows semantic versioning rules
+> Release version _(and git tag, of course)_ MUST starts with `v` prefix (eg.: `v0.0.1` or `v1.2.3`) and follows semantic versioning rules
 >
 > Do not forget to update docker image version tag in "usage example" above
 
