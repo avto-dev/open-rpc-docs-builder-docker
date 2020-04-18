@@ -1,0 +1,52 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+    tags-ignore:
+      - '**'
+  pull_request:
+
+jobs:
+  lint-changelog:
+    name: Lint changelog file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Lint changelog file
+        uses: docker://avtodev/markdown-lint:v1 # Action page: <https://github.com/avto-dev/markdown-lint>
+        with:
+          rules: '/lint/rules/changelog.js'
+          config: '/lint/config/changelog.yml'
+          args: './CHANGELOG.md'
+
+  image:
+    name: Build docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Build image
+        run: docker build -t builder:local -f Dockerfile .
+
+      - name: Get open-rpc examples
+        uses: actions/checkout@v2
+        with:
+          repository: open-rpc/examples # Link: <https://github.com/open-rpc/examples/>
+
+      - name: Try to execute
+        run: |
+          docker run -v $(pwd)/service-descriptions/api-with-examples-openrpc.json:/app/src/schema/openrpc.json:ro \
+            --name open-rpc-docs-builder builder:local yarn run build
+          docker commit open-rpc-docs-builder built:local
+
+      - name: Verify build
+        run: docker run built:local test -f build/index.html
