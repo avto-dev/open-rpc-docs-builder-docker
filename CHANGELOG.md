@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 ### Changed
 
 - User in dockerfile now `node` (previously used `root`)
-- Added files owner changed `root` &rarr; `node`
+- Files owner (that added during image building) changed `root` &rarr; `node`
 - All files from branch `image-1.1` moved into `master` branch
 - GitHub actions uses **latest** example from `open-rpc/examples` repository (previously version was fixed)
 - Usage examples in readme file
