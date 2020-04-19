@@ -29,6 +29,8 @@ Name              | Possible values | Default | Description
 
 ## Examples
 
+All supported docker tags [can be found here][link_hub_tags].
+
 ### Build using volumes
 
 Run into your shell (your open-rpc schema must be located in `./path/to/your/openrpc.json`):
@@ -88,5 +90,6 @@ MIT. Use anywhere for your pleasure.
 [badge_test]:https://img.shields.io/github/workflow/status/avto-dev/open-rpc-docs-builder-docker/build?maxAge=30&logo=github
 [link_test]:https://github.com/avto-dev/open-rpc-docs-builder-docker/actions
 [link_hub]:https://hub.docker.com/r/avtodev/open-rpc-docs-builder
+[link_hub_tags]:https://hub.docker.com/r/avtodev/open-rpc-docs-builder/tags
 [link_license]:https://github.com/avto-dev/open-rpc-docs-builder-docker/blob/master/LICENSE
 [link_issues]:https://github.com/avtodev/open-rpc-docs-builder-docker/issues

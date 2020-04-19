@@ -14,9 +14,12 @@ RUN set -x \
 
 USER node:node
 
-WORKDIR /app
+COPY --chown=node ./public /app/public
+COPY --chown=node ./src /app/src
+COPY --chown=node ./package.json /app
+COPY --chown=node ./tsconfig.json /app
 
-COPY --chown=node . ./
+WORKDIR /app
 
 RUN set -x \
   && yarn install --network-timeout 100000 --production=true \
