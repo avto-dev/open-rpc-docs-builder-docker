@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v1.3.0
+
+### Changed
+
+- Updated `@open-rpc/docs-react` from `1.1.5` to `1.2.0`
+- Updated `@types/node` from `12.12.36` to `13.13.0`
+- Updated `@open-rpc/meta-schema` from `1.6.0` to `1.10.2`
+- Updated `react-scripts` from `3.3.0` to `3.4.1`
+- Updated `@open-rpc/schema-utils-js` from `1.12.3` to `1.13.0`
+- Updated styles for compatible with `@open-rpc/docs-react` `1.2`
+- Updated node image from `node:12-alpine` to `node:13-alpine`
+
 ## v1.2.0
 
 ### Changed
