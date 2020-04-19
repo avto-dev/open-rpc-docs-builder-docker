@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:13-alpine
 
 LABEL \
   org.label-schema.schema-version="1.0" \
