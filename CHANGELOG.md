@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v1.3.1
+
+### Changed
+
+- Updated `@open-rpc/docs-react` from `1.2.0` to `1.2.1`
+
 ## v1.3.0
 
 ### Changed
