@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Documentation from "@open-rpc/docs-react";
-import {parseOpenRPCDocument} from "@open-rpc/schema-utils-js/build/src/index-web";
+import {parseOpenRPCDocument} from "@open-rpc/schema-utils-js/build/index-web";
 import schema from './schema/openrpc.json';
-import {OpenrpcDocument as OpenRPC} from "@open-rpc/meta-schema/build/src";
+import {OpenrpcDocument as OpenRPC} from "@open-rpc/meta-schema/build";
 import {MuiThemeProvider} from "@material-ui/core/styles";
 import {CssBaseline} from "@material-ui/core";
 import {darkTheme, lightTheme} from "./themes/openrpcTheme";
