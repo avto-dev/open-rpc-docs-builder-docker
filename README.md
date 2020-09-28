@@ -43,7 +43,7 @@ $ docker run \
     --user "$(id -u):$(id -g)" \
     -v $(pwd)/path/to/your/openrpc.json:/app/src/schema/openrpc.json:ro \
     -v $(pwd)/public:/app/build:rw \
-    avtodev/open-rpc-docs-builder:1.2 \
+    avtodev/open-rpc-docs-builder:1.3 \
     yarn run build
 ```
 
@@ -52,7 +52,7 @@ And then watch into `./public` directory.
 ### Docker usage example
 
 ```dockerfile
-FROM avtodev/open-rpc-docs-builder:1.2 AS builder
+FROM avtodev/open-rpc-docs-builder:1.3 AS builder
 
 # Copy openrpc.json file into `/app/src/schemas` derictory
 COPY --chown=node ./openrpc.json /app/src/schemas/openrpc.json
